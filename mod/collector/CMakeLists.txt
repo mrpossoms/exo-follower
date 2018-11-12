@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+set_property(GLOBAL PROPERTY CXX_STANDARD 11)
 
 find_package(gazebo REQUIRED)
 find_library(EXO_LIB NAMES libexo exo)

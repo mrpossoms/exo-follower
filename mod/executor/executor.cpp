@@ -1,6 +1,6 @@
 #include <exo/exo.hpp>
 
-#if defined(__APPLE__) || defined(__linux__)
+#if defined(__unix__)
 #include <exo/unix.hpp>
 #endif
 
@@ -65,7 +65,7 @@ struct executor : public exo::Mod
             }
         }
 
-        exo::Log::info(1, "idx_min:" + std::to_string(idx_min) + " idx:" + std::to_string(idx));
+        exo::Log::info(2, "idx_min:" + std::to_string(idx_min) + " idx:" + std::to_string(idx));
 
         if (idx_min > 1.5)
         {
@@ -103,7 +103,7 @@ struct executor : public exo::Mod
 
 
 
-#if defined(__APPLE__) || defined(__linux__)
+#if defined(__unix__)
 
 int main(int argc, char* argv[])
 {

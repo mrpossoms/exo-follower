@@ -1,6 +1,6 @@
 #include <exo/exo.hpp>
 
-#if defined(__APPLE__) || defined(__linux__)
+#ifdef __unix__
 #include <exo/unix.hpp>
 
 #include <sdf/sdf.hh>
@@ -19,7 +19,7 @@ using namespace exo;
 using namespace gazebo;
 
 struct GAZEBO_VISIBLE actuator : public exo::Mod,
-                                  public gazebo::ModelPlugin
+                                 public gazebo::ModelPlugin
 {
     event::ConnectionPtr update_connection;
     physics::ModelPtr model;

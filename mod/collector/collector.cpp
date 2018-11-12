@@ -1,6 +1,6 @@
 #include <exo/exo.hpp>
 
-//#ifdef __unix__
+#ifdef __unix__
 #include <exo/unix.hpp>
 
 #include <sdf/sdf.hh>
@@ -11,7 +11,7 @@
 #include <gazebo/rendering/DepthCamera.hh>
 #include <gazebo/physics/physics.hh>
 #include <gazebo/sensors/sensors.hh>
-//#endif
+#endif
 
 #include "msg/sensor.h"
 
@@ -176,8 +176,20 @@ struct GAZEBO_VISIBLE collector : public exo::Mod,
         payload.put<exo::msgs::Sensors>(sensors);
 
         // stuff it into the outlet
-        if ((outlet << payload.buffer()) == Result::OK)
+        auto res = outlet << payload.buffer(); 
+        if (res != Result::OK)
         {
+            // exo::Log::error(0, "collector: writing payload failed");
+
+            switch(res)
+            {
+                case Result::WRITE_ERR:
+                    exo::Log::error(0, "collector: WRITE_ERR");
+                    break;
+                case Result::CONNECTION_FAILURE:
+                    // exo::Log::error(0, "collector: CONNECTION_FAILURE");
+                    break;
+            }
             // outlet << payload.buffer();
             // gzdbg << "Wrote frame: " << std::to_string(_width) << "x" << std::to_string(_height) << std::endl;
         }

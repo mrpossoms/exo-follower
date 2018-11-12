@@ -642,8 +642,8 @@
       </joint>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <plugin name='actuator' filename='/Users/kirk/code/exo-follower/mod/actuator/build/libactuator.dylib'/>
-      <plugin name='collector' filename='/Users/kirk/code/exo-follower/mod/collector/build/libcollector.dylib'/>
+      <plugin name='actuator' filename='/home/kirk/code/exo-follower/mod/actuator/build/libactuator.so'/>
+      <plugin name='collector' filename='/home/kirk/code/exo-follower/mod/collector/build/libcollector.so'/>
       <pose frame=''>-2.45828 0.031607 0 0 -0 0</pose>
     </model>
     <model name='unit_box'>
